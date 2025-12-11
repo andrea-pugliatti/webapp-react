@@ -16,28 +16,23 @@ export default function Homepage() {
 	}, []);
 
 	return (
-		<>
-			<h1>Hello</h1>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-				facilis reprehenderit accusamus earum id quia eligendi rem harum nemo!
-				Deserunt vel expedita excepturi maxime totam exercitationem doloribus
-				aut ipsam modi?
-			</p>
-			{movies.map((movie) => (
-				<div key={movie.id}>
-					<img
-						height={200}
-						src={`http://localhost:3000/img/${movie.image}`}
-						alt={movie.title}
-					/>
-					<div>{movie.title}</div>
-					<div>{movie.director}</div>
-					<div>{movie.genre}</div>
-					<div>{movie.release_year}</div>
-					<div>{movie.abstract}</div>
-				</div>
-			))}
-		</>
+		<div className="container">
+			<div className="row">
+				{movies.map((movie) => (
+					<div key={movie.id} className="card">
+						<img
+							height={200}
+							src={`http://localhost:3000/img/${movie.image}`}
+							alt={movie.title}
+						/>
+						<div>{movie.title}</div>
+						<div>{movie.director}</div>
+						<div>{movie.genre}</div>
+						<div>{movie.release_year}</div>
+						<div>{movie.abstract}</div>
+					</div>
+				))}
+			</div>
+		</div>
 	);
 }

@@ -5,9 +5,45 @@
 	box-sizing: border-box;
 }
 
+header {
+	background-color: lightblue;
+	padding: 1rem;
+}
+
 .container {
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 2rem;
-	text-align: center;
+}
+
+.nav {
+	max-width: 1280px;
+	margin: 0 auto;
+	display: flex;
+	gap: 2rem;
+
+	& > * {
+		align-self: center;
+	}
+
+	a {
+		text-decoration: none;
+		color: black;
+		font-size: 1.1rem;
+		&:hover {
+			color: rgb(90, 90, 202);
+			text-decoration: underline;
+		}
+	}
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 1rem;
+	gap: 1rem;
+}
+
+.card {
+	width: 200px;
 }
