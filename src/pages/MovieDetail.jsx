@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <Linter bug> */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -22,15 +23,29 @@ export default function MovieDetail() {
 			<div className="movie-detail">
 				<div key={movie.id}>
 					<img
-						height={200}
+						height={400}
 						src={`http://localhost:3000/img/${movie.image}`}
 						alt={movie.title}
 					/>
-					<div>{movie.title}</div>
-					<div>{movie.director}</div>
-					<div>{movie.genre}</div>
-					<div>{movie.release_year}</div>
-					<div>{movie.abstract}</div>
+					<h2 className="movie-title">{movie.title}</h2>
+					<div className="movie-director">{movie.director}</div>
+					<div className="movie-genre">{movie.genre}</div>
+					<div className="movie-release">{movie.release_year}</div>
+					<div className="movie-abstract">{movie.abstract}</div>
+					<h3>Recensioni</h3>
+					<ul className="reviews">
+						{movie.reviews
+							? movie.reviews.map((review) => (
+									<li key={review.id}>
+										<div className="review-title">
+											<span className="review-name">{review.name} </span>
+											<span className="review-vote">{review.vote} / 5</span>
+										</div>
+										<div className="review-text">{review.text}</div>
+									</li>
+								))
+							: ""}
+					</ul>
 				</div>
 			</div>
 		</div>

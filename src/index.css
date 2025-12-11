@@ -62,4 +62,28 @@ footer {
 	margin: 0 auto;
 	max-width: 400px;
 	text-align: center;
+
+	.movie-title {
+	}
+
+	.movie-director {
+	}
+
+	.movie-genre {
+	}
+
+	.movie-release {
+	}
+
+	.movie-abstract {
+	}
+}
+
+.reviews {
+	list-style: none;
+
+	.review-title {
+	}
+	.review-name {
+	}
 }
