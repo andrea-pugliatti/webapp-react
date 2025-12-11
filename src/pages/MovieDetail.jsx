@@ -18,26 +18,21 @@ export default function MovieDetail() {
 	}, []);
 
 	return (
-		<>
-			<h1>Movie</h1>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-				facilis reprehenderit accusamus earum id quia eligendi rem harum nemo!
-				Deserunt vel expedita excepturi maxime totam exercitationem doloribus
-				aut ipsam modi?
-			</p>
-			<div key={movie.id}>
-				<img
-					height={200}
-					src={`http://localhost:3000/img/${movie.image}`}
-					alt={movie.title}
-				/>
-				<div>{movie.title}</div>
-				<div>{movie.director}</div>
-				<div>{movie.genre}</div>
-				<div>{movie.release_year}</div>
-				<div>{movie.abstract}</div>
+		<div className="container">
+			<div className="movie-detail">
+				<div key={movie.id}>
+					<img
+						height={200}
+						src={`http://localhost:3000/img/${movie.image}`}
+						alt={movie.title}
+					/>
+					<div>{movie.title}</div>
+					<div>{movie.director}</div>
+					<div>{movie.genre}</div>
+					<div>{movie.release_year}</div>
+					<div>{movie.abstract}</div>
+				</div>
 			</div>
-		</>
+		</div>
 	);
 }
