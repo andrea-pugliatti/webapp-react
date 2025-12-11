@@ -5,7 +5,7 @@ Ora è il momento di prepararci al frontend della nostra Web App!
 
 ### MILESTONE 0 
 
-- Ragionare e preparare uno schemino per ompostare la struttura del lavoro in maniera da sfruttare la riutailizzabilità dei componenti React e le loro props.
+- Ragionare e preparare uno schemino per impostare la struttura del lavoro in maniera da sfruttare la riutilizzabilità dei componenti React e le loro props.
 
 ### MILESTONE 1
 
