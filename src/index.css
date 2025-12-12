@@ -44,16 +44,30 @@ footer {
 .row {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
 	padding: 1rem;
 	gap: 1rem;
 }
 
 .card {
-	width: 200px;
+	flex: 1 1 250px;
+	max-width: calc(1280px / 4 - 1rem);
+	text-align: center;
+	border: 2px dashed black;
+	border-radius: 10px;
+	padding: 1rem;
+
 	a {
 		text-decoration: none;
 		color: black;
+	}
+
+	img {
+		height: 300px;
+	}
+
+	.movie-title {
+		font-size: 2rem;
+		font-weight: 700;
 	}
 }
 
@@ -74,20 +88,12 @@ footer {
 	}
 
 	.movie-title {
-		padding: 3rem 0;
+		margin: 3rem 0;
+		padding: 0.5rem;
 		font-size: 2.5rem;
-	}
-
-	.movie-director {
-	}
-
-	.movie-genre {
-	}
-
-	.movie-release {
-	}
-
-	.movie-abstract {
+		text-align: center;
+		border: 2px dashed black;
+		border-radius: 10px;
 	}
 
 	.movie-reviews {
@@ -103,10 +109,5 @@ footer {
 		border: 1px dashed black;
 		border-radius: 10px;
 		padding: 0.9rem;
-	}
-
-	.review-title {
-	}
-	.review-name {
 	}
 }
