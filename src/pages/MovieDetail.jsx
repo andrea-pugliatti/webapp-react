@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/correctness/useExhaustiveDependencies: <Linter bug> */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import MovieReview from "../components/MovieReview";
 
 export default function MovieDetail() {
 	const { id } = useParams();
@@ -21,31 +22,34 @@ export default function MovieDetail() {
 	return (
 		<div className="container">
 			<div className="movie-detail">
-				<div key={movie.id}>
-					<img
-						height={400}
-						src={`http://localhost:3000/img/${movie.image}`}
-						alt={movie.title}
-					/>
+				<img
+					src={`http://localhost:3000/img/${movie.image}`}
+					alt={movie.title}
+				/>
+				<div className="movie-body">
 					<h2 className="movie-title">{movie.title}</h2>
-					<div className="movie-director">{movie.director}</div>
-					<div className="movie-genre">{movie.genre}</div>
-					<div className="movie-release">{movie.release_year}</div>
-					<div className="movie-abstract">{movie.abstract}</div>
-					<h3>Recensioni</h3>
-					<ul className="reviews">
-						{movie.reviews
-							? movie.reviews.map((review) => (
-									<li key={review.id}>
-										<div className="review-title">
-											<span className="review-name">{review.name} </span>
-											<span className="review-vote">{review.vote} / 5</span>
-										</div>
-										<div className="review-text">{review.text}</div>
-									</li>
-								))
-							: ""}
-					</ul>
+					<div className="movie-director">
+						<b>Director:</b> {movie.director}
+					</div>
+					<div className="movie-release">
+						<b>Year:</b> {movie.release_year}
+					</div>
+					<div className="movie-genre">
+						<b>Genre:</b> {movie.genre}
+					</div>
+					<div className="movie-abstract">
+						<b>Abstract:</b> {movie.abstract}
+					</div>
+					<div className="movie-reviews">
+						<h3>Recensioni: </h3>
+						<ul className="reviews">
+							{movie.reviews
+								? movie.reviews.map((review) => (
+										<MovieReview key={review.id} review={review} />
+									))
+								: ""}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
