@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieReviewForm({ movieId }) {
 	const emptyForm = {
@@ -8,6 +9,8 @@ export default function MovieReviewForm({ movieId }) {
 	};
 
 	const [formData, setFormData] = useState(emptyForm);
+
+	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -22,6 +25,7 @@ export default function MovieReviewForm({ movieId }) {
 			.then((response) => {
 				console.log("Review submitted successfully", response);
 				setFormData(emptyForm);
+				navigate(`/movie/${movieId}`);
 			})
 			.catch((error) => {
 				console.error("Error submitting review", error);
