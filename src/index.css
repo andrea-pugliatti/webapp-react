@@ -101,6 +101,59 @@ footer {
 	}
 }
 
+.review-form {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+
+	.form-top {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.form-text {
+		padding: 0.5rem;
+		textarea {
+			border: 1px dashed black;
+			border-radius: 10px;
+
+			padding: 0.5rem;
+			width: 100%;
+		}
+	}
+
+	.form-name,
+	.form-rating,
+	.form-text {
+		input,
+		select {
+			border: 1px dashed black;
+			border-radius: 10px;
+			padding: 0.6rem 1rem;
+		}
+		label {
+			font-size: 0.8rem;
+			font-weight: 500;
+			padding-right: 1rem;
+		}
+	}
+
+	.form-button {
+		border: 1px dashed black;
+		border-radius: 10px;
+		background-color: white;
+		font-weight: 500;
+		&:hover {
+			background-color: lightgray;
+			border: 1px solid black;
+		}
+	}
+
+	& > * {
+		padding: 0.5rem;
+	}
+}
+
 .reviews {
 	list-style: none;
 
@@ -109,5 +162,15 @@ footer {
 		border: 1px dashed black;
 		border-radius: 10px;
 		padding: 0.9rem;
+		max-width: 500px;
+		overflow: clip;
+
+		.review-title {
+			padding-bottom: 0.5rem;
+		}
+
+		.review-name {
+			font-weight: 500;
+		}
 	}
 }
