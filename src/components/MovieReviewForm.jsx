@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function MovieReviewForm({ movieId }) {
 	const emptyForm = {
 		name: "",
-		vote: "",
+		vote: "1",
 		text: "",
 	};
 
@@ -12,9 +12,7 @@ export default function MovieReviewForm({ movieId }) {
 
 	const navigate = useNavigate();
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
+	const handleSubmit = () => {
 		fetch(`http://localhost:3000/api/movies/${movieId}/review`, {
 			method: "POST",
 			headers: {
@@ -22,8 +20,7 @@ export default function MovieReviewForm({ movieId }) {
 			},
 			body: JSON.stringify(formData),
 		})
-			.then((response) => {
-				console.log("Review submitted successfully", response);
+			.then(() => {
 				setFormData(emptyForm);
 				navigate(`/movie/${movieId}`);
 			})
@@ -34,10 +31,8 @@ export default function MovieReviewForm({ movieId }) {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<div>
-				<label htmlFor="name" className="">
-					Name
-				</label>
+			<div className="form-name">
+				<label htmlFor="name">Name</label>
 				<input
 					type="text"
 					name="name"
@@ -45,31 +40,29 @@ export default function MovieReviewForm({ movieId }) {
 					placeholder="John"
 					value={formData.name}
 					onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+					required
 				/>
 			</div>
 
-			<div>
-				<label htmlFor="vote" className="">
-					Rating
-				</label>
+			<div className="form-rating">
+				<label htmlFor="vote">Rating</label>
 				<select
 					name="vote"
 					id="vote"
 					value={formData.vote}
 					onChange={(e) => setFormData({ ...formData, vote: e.target.value })}
+					required
 				>
-					<option value={Number(1)}>1</option>
-					<option value={Number(2)}>2</option>
-					<option value={Number(3)}>3</option>
-					<option value={Number(4)}>4</option>
-					<option value={Number(5)}>5</option>
+					<option value={1}>1</option>
+					<option value={2}>2</option>
+					<option value={3}>3</option>
+					<option value={4}>4</option>
+					<option value={5}>5</option>
 				</select>
 			</div>
 
-			<div>
-				<label htmlFor="text" className="">
-					Review
-				</label>
+			<div className="form-text">
+				<label htmlFor="text">Review</label>
 				<textarea
 					name="text"
 					id="text"
@@ -77,10 +70,13 @@ export default function MovieReviewForm({ movieId }) {
 					placeholder="Say something about this movie..."
 					value={formData.text}
 					onChange={(e) => setFormData({ ...formData, text: e.target.value })}
+					required
 				></textarea>
 			</div>
 
-			<button type="submit">Submit</button>
+			<button className="form-button" type="submit">
+				Submit
+			</button>
 		</form>
 	);
 }
