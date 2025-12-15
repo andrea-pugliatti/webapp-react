@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieReview from "../components/MovieReview";
+import MovieReviewForm from "../components/MovieReviewForm";
 
 export default function MovieDetail() {
 	const { id } = useParams();
@@ -42,6 +43,7 @@ export default function MovieDetail() {
 					</div>
 					<div className="movie-reviews">
 						<h3>Recensioni: </h3>
+						<MovieReviewForm movieId={id} />
 						<ul className="reviews">
 							{movie.reviews
 								? movie.reviews.map((review) => (
