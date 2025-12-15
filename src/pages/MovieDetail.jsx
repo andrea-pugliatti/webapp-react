@@ -42,7 +42,7 @@ export default function MovieDetail() {
 						<b>Abstract:</b> {movie.abstract}
 					</div>
 					<div className="movie-reviews">
-						<h3>Recensioni: </h3>
+						<h3>Reviews: </h3>
 						<MovieReviewForm movieId={id} />
 						<ul className="reviews">
 							{movie.reviews
