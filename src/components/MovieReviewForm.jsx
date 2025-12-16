@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import { useAlert } from "../contexts/AlertContext";
-
 export default function MovieReviewForm({ movieId, fetchMovie }) {
 	const emptyForm = {
 		name: "",
@@ -11,7 +9,7 @@ export default function MovieReviewForm({ movieId, fetchMovie }) {
 
 	const [formData, setFormData] = useState(emptyForm);
 
-	const { alert, setAlert } = useAlert();
+	const [alert, setAlert] = useState({ show: false, message: "" });
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
