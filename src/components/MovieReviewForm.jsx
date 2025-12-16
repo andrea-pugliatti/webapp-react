@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function MovieReviewForm({ movieId }) {
+export default function MovieReviewForm({ movieId, fetchMovie }) {
 	const emptyForm = {
 		name: "",
 		vote: "1",
@@ -9,8 +8,6 @@ export default function MovieReviewForm({ movieId }) {
 	};
 
 	const [formData, setFormData] = useState(emptyForm);
-
-	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -29,7 +26,7 @@ export default function MovieReviewForm({ movieId }) {
 				console.error("Error submitting review", error);
 			})
 			.finally(() => {
-				navigate(0);
+				fetchMovie();
 			});
 	};
 

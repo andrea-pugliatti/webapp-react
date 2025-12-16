@@ -8,12 +8,11 @@ import { useLoader } from "../contexts/LoaderContext";
 export default function MovieDetail() {
 	const { id } = useParams();
 	const [movie, setMovie] = useState({});
-	const endpoint = `http://localhost:3000/api/movies/${id}`;
 
 	const { setLoader } = useLoader();
 
-	useEffect(() => {
-		setLoader(true);
+	function fetchMovie() {
+		const endpoint = `http://localhost:3000/api/movies/${id}`;
 		fetch(endpoint)
 			.then((res) => res.json())
 			.then((res) => {
@@ -25,6 +24,11 @@ export default function MovieDetail() {
 			.finally(() => {
 				setLoader(false);
 			});
+	}
+
+	useEffect(() => {
+		setLoader(true);
+		fetchMovie();
 	}, []);
 
 	return (
@@ -50,7 +54,7 @@ export default function MovieDetail() {
 					</div>
 					<div className="movie-reviews">
 						<h3>Reviews: </h3>
-						<MovieReviewForm movieId={id} />
+						<MovieReviewForm movieId={id} fetchMovie={fetchMovie} />
 						<ul className="reviews">
 							{movie.reviews
 								? movie.reviews.map((review) => (
