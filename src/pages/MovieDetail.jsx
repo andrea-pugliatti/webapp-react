@@ -20,7 +20,7 @@ export default function MovieDetail() {
 				setMovie(res);
 			})
 			.catch((err) => {
-				throw err;
+				console.error(err);
 			})
 			.finally(() => {
 				setLoader(false);

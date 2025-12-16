@@ -5,7 +5,7 @@ Ora è il momento di prepararci al frontend della nostra Web App!
 
 ### MILESTONE 0 
 
-- Ragionare e preparare uno schemino per impostare la struttura del lavoro in maniera da sfruttare la riutilizzabilità dei componenti React e le loro props.
+- Ragionare e preparare uno schemino per impostare la struttura del lavoro in maniera da sfruttare la riutilizzabilità dei componenti React e le loro props
 
 ### MILESTONE 1
 
@@ -55,7 +55,7 @@ Miglioriamo l’esperienza dell’utente inserendo
 Concludiamo migliorando l’esperienza sulla nostra SPA, inserendo un loader.
 
 - Creiamo un componente loader
-- Questo componente deve poter apparire su qualunque pagina della nostra app.
+- Questo componente deve poter apparire su qualunque pagina della nostra app
 - Creiamo e sfruttiamo un Context per dare la possibilità ad ogni componente di attivare o disattivare il loader sulla propria pagina
 
 ### Bonus
