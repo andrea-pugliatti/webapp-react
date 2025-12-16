@@ -12,7 +12,9 @@ export default function MovieReviewForm({ movieId }) {
 
 	const navigate = useNavigate();
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
 		fetch(`http://localhost:3000/api/movies/${movieId}/review`, {
 			method: "POST",
 			headers: {
@@ -22,10 +24,12 @@ export default function MovieReviewForm({ movieId }) {
 		})
 			.then(() => {
 				setFormData(emptyForm);
-				navigate(`/movie/${movieId}`);
 			})
 			.catch((error) => {
 				console.error("Error submitting review", error);
+			})
+			.finally(() => {
+				navigate(0);
 			});
 	};
 
