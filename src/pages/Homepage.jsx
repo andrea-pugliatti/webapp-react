@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <Linter bug> */
 import { useEffect, useState } from "react";
 
 import MovieCard from "../components/MovieCard";
