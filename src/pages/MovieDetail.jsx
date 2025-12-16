@@ -3,13 +3,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieReview from "../components/MovieReview";
 import MovieReviewForm from "../components/MovieReviewForm";
+import { useLoader } from "../contexts/LoaderContext";
 
 export default function MovieDetail() {
 	const { id } = useParams();
 	const [movie, setMovie] = useState({});
 	const endpoint = `http://localhost:3000/api/movies/${id}`;
 
+	const { setLoader } = useLoader();
+
 	useEffect(() => {
+		setLoader(true);
 		fetch(endpoint)
 			.then((res) => res.json())
 			.then((res) => {
@@ -17,6 +21,9 @@ export default function MovieDetail() {
 			})
 			.catch((err) => {
 				throw err;
+			})
+			.finally(() => {
+				setLoader(false);
 			});
 	}, []);
 

@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 
 import MovieCard from "../components/MovieCard";
 
+import { useLoader } from "../contexts/LoaderContext";
+
 export default function Homepage() {
 	const [movies, setMovies] = useState([]);
 	const endpoint = "http://localhost:3000/api/movies";
+	const { setLoader } = useLoader();
 
 	useEffect(() => {
+		setLoader(true);
 		fetch(endpoint)
 			.then((res) => res.json())
 			.then((res) => {
@@ -14,6 +18,9 @@ export default function Homepage() {
 			})
 			.catch((err) => {
 				throw err;
+			})
+			.finally(() => {
+				setLoader(false);
 			});
 	}, []);
 
