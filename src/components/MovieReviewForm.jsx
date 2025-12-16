@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useAlert } from "../contexts/AlertContext";
+
 export default function MovieReviewForm({ movieId, fetchMovie }) {
 	const emptyForm = {
 		name: "",
@@ -8,6 +10,8 @@ export default function MovieReviewForm({ movieId, fetchMovie }) {
 	};
 
 	const [formData, setFormData] = useState(emptyForm);
+
+	const { alert, setAlert } = useAlert();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -19,8 +23,12 @@ export default function MovieReviewForm({ movieId, fetchMovie }) {
 			},
 			body: JSON.stringify(formData),
 		})
-			.then(() => {
+			.then((res) => {
 				setFormData(emptyForm);
+				setAlert({ show: true, message: "Review sent successfully." });
+				if (!res.ok) {
+					setAlert({ show: true, message: "An error occurred." });
+				}
 			})
 			.catch((error) => {
 				console.error("Error submitting review", error);
@@ -32,6 +40,7 @@ export default function MovieReviewForm({ movieId, fetchMovie }) {
 
 	return (
 		<form onSubmit={handleSubmit} className="review-form">
+			{alert.show && <div>{alert.message}</div>}
 			<div className="form-top">
 				<div className="form-name">
 					<label htmlFor="name">Name</label>
